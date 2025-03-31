@@ -12,7 +12,7 @@ Alternativamente, estimulo o uso dos servidores embarcados da linguagem python (
 
 ## Slides
 
-Em construção...
+- [Bimestre 1](./pages/bimestre1.md)
 
 ## Horários
 
