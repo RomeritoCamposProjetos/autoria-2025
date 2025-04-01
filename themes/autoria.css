@@ -1,0 +1,58 @@
+/* @theme autoria */
+
+@import "default";
+
+* {
+    list-style-type: none;
+}
+
+section {
+    display: flex;
+    flex-flow: column;    
+    background-color: rgb(237, 237, 237);        
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: bolder;    
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: bolder; 
+    color: black;
+}
+
+h3 {
+    font-size: 1.25em;
+    font-weight: bold; 
+}
+
+/*Centralizar título*/
+section:has(h1) {
+    justify-content: center;
+    align-items: center;
+}
+
+section:has(h2) {
+    justify-content: flex-start;
+}
+
+section:has(h1) footer {    
+    width: 100%;
+    text-align: center;
+    content: 'romerito';
+}
+
+
+ul li::marker {
+    font-size: 1.5em;
+    content: '\219D  ';    
+    background-color: transparent;
+    color: blue;    
+}
+
+ul li {
+    padding: 0;
+    margin: 0;
+}
