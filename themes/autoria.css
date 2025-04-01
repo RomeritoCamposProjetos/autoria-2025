@@ -56,3 +56,41 @@ ul li {
     padding: 0;
     margin: 0;
 }
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th, tr {
+    font-size: 0.8em;   
+    border: 1px solid black; 
+}
+th {
+    background-color: black;
+    color: white;
+}
+
+td:first-of-type {
+    color: black;
+    background-color: #92d050;
+}
+
+td:nth-of-type(2) {
+    text-align: center;
+    background-color: #d9d9d9;
+}
+
+td:nth-of-type(3) {
+    text-align: center;
+    background-color: #f3f3f3;
+}
+
+td > strong {
+    color: blue
+}
+
+td > em {
+    color: red;
+    font-weight: bold;
+}
+
