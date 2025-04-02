@@ -6,6 +6,12 @@
     list-style-type: none;
 }
 
+:root {
+    --primary: #fff;
+    --background: #fff;
+    --secondary: #fff
+}
+
 section {
     display: flex;
     flex-flow: column;    
