@@ -1,4 +1,4 @@
-/* @theme autoria */
+/* @theme design */
 
 @import "default";
 
@@ -20,7 +20,8 @@ section {
 
 h1 {
     font-size: 3em;
-    font-weight: bolder;    
+    font-weight: bolder;        
+    text-align: center;
 }
 
 h2 {
@@ -37,7 +38,7 @@ h3 {
 /*Centralizar título*/
 section:has(h1) {
     justify-content: center;
-    align-items: center;
+    align-items: center;    
 }
 
 section:has(h2) {
@@ -100,3 +101,44 @@ td > em {
     font-weight: bold;
 }
 
+
+/* Regras para Figura com Legenda */
+div.wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0;
+    align-items: center;    
+}
+
+div.wrapper p {
+    font-size: 18px;
+}
+
+div.wrapper p {
+    font-weight: bolder;
+}
+
+p.nota:before {
+    content: "\00270D ";
+    width: 40px;
+    height: 40px;
+    position: absolute;   
+    top: -27px;
+    left: -13px;
+    transform: rotate(-30deg) scale(1.5);
+}
+
+p.nota {
+    position: relative;
+    background-color: rgb(244, 244, 186);
+    padding: 5px 10px; 
+    font-size: 20px; 
+    width: 350px;
+    text-align: justify;
+    border: 1px solid rgb(112, 112, 112);
+    border-radius: 5px;
+}
+
+p.nota a::before {
+    content: "\01F517 ";
+}
