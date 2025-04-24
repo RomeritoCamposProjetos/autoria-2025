@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Fundamentos Internet - Web</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f5;
+      padding: 20px;
+    }
+
+    .quiz-container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    .question {
+      margin-bottom: 15px;
+    }
+
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 5px 0;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      background: #eee;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .options button.correct {
+      background-color: #c8e6c9;
+      border-color: #388e3c;
+    }
+
+    .options button.wrong {
+      background-color: #ffcdd2;
+      border-color: #d32f2f;
+    }
+
+    .score {
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #next-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #feedback {
+      margin-top: 10px;
+      font-style: italic;
+      color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h2 id="question-title"></h2>
+    <div class="options" id="options-container"></div>
+    <div id="feedback"></div>
+    <button id="next-btn" style="display:none;">Próxima</button>
+    <div class="score" id="score-container"></div>
+  </div>
+
+  <script>
+    const quizData = [
+  // Lembrar (5)
+  {
+    question: "O que é um ISP?",
+    options: ["Provedor de Serviços de Internet", "Protocolo de Segurança de Internet", "Servidor Web", "Sistema de Protocolo Integrado"],
+    correct: 0,
+    feedback: "ISP é a sigla para Internet Service Provider, ou Provedor de Serviços de Internet, responsável por fornecer acesso à internet."
+  },
+  {
+    question: "Qual número representa um endereço IP típico da versão 4?",
+    options: ["192.168.0.1", "abc.def.ghi.jkl", "1234:5678::abcd", "http://meusite.com"],
+    correct: 0,
+    feedback: "Um endereço IPv4 comum é composto por quatro números entre 0 e 255, separados por pontos, como 192.168.0.1."
+  },
+  {
+    question: "Qual é a principal função do DNS?",
+    options: ["Traduzir nomes de domínio em endereços IP", "Aumentar a velocidade da internet", "Controlar o tráfego de rede", "Detectar vírus na web"],
+    correct: 0,
+    feedback: "O DNS (Sistema de Nomes de Domínio) converte nomes como www.exemplo.com em endereços IP."
+  },
+  {
+    question: "Qual protocolo é utilizado para acessar páginas web?",
+    options: ["HTTP", "FTP", "SMTP", "IP"],
+    correct: 0,
+    feedback: "HTTP é o protocolo usado para comunicação entre clientes e servidores web."
+  },
+  {
+    question: "O que significa HTTP?",
+    options: ["HyperText Transfer Protocol", "High Transfer Technology Protocol", "Hyperlink Text Transfer Program", "Host Transfer Transmission Protocol"],
+    correct: 0,
+    feedback: "HTTP significa HyperText Transfer Protocol, protocolo usado para transferência de páginas da web."
+  },
+
+  // Compreender (8)
+  {
+    question: "Como o DNS facilita a navegação na internet?",
+    options: [
+      "Traduz nomes de domínio em endereços IP",
+      "Armazena cookies dos sites acessados",
+      "Bloqueia sites perigosos",
+      "Redireciona a conexão para redes privadas"
+    ],
+    correct: 0,
+    feedback: "O DNS permite que os usuários acessem sites usando nomes legíveis em vez de memorizar números IP."
+  },
+  {
+    question: "Qual é a função de um servidor web?",
+    options: [
+      "Responder às requisições feitas por navegadores",
+      "Criar páginas HTML automaticamente",
+      "Conectar roteadores e switches",
+      "Converter IPs em domínios"
+    ],
+    correct: 0,
+    feedback: "O servidor web processa requisições HTTP e envia conteúdos como páginas HTML para o cliente."
+  },
+  {
+    question: "O que acontece quando digitamos um endereço como www.exemplo.com no navegador?",
+    options: [
+      "O navegador consulta o DNS para encontrar o IP correspondente e envia uma requisição HTTP ao servidor.",
+      "O navegador gera um IP aleatório e envia dados para ele.",
+      "O navegador se conecta diretamente ao provedor de internet.",
+      "O navegador inicia uma conexão FTP."
+    ],
+    correct: 0,
+    feedback: "O navegador consulta o DNS, obtém o IP do servidor e envia uma requisição HTTP para obter a página."
+  },
+  {
+    question: "Qual das opções representa corretamente o fluxo HTTP?",
+    options: [
+      "Cliente envia requisição → Servidor responde",
+      "Servidor envia requisição → Cliente responde",
+      "DNS envia resposta → Cliente responde",
+      "Roteador envia IP → Navegador responde"
+    ],
+    correct: 0,
+    feedback: "O fluxo típico do HTTP envolve o cliente (navegador) enviando uma requisição e o servidor respondendo."
+  },
+  {
+    question: "Qual a diferença entre HTTP e HTTPS?",
+    options: [
+      "HTTPS é HTTP com camada de segurança (SSL/TLS)",
+      "HTTP é mais rápido que HTTPS",
+      "HTTPS é usado apenas para e-mails",
+      "HTTP é criptografado e HTTPS não"
+    ],
+    correct: 0,
+    feedback: "HTTPS utiliza SSL/TLS para criptografar os dados transmitidos, garantindo maior segurança."
+  },
+  {
+    question: "Por que os endereços IP são importantes para servidores web?",
+    options: [
+      "Permitem que os navegadores encontrem os servidores corretamente",
+      "Aumentam a velocidade do carregamento",
+      "Servem como nomes amigáveis para os sites",
+      "Substituem os domínios no uso do DNS"
+    ],
+    correct: 0,
+    feedback: "Os endereços IP identificam unicamente os servidores web na internet, permitindo que os clientes se conectem a eles."
+  },
+  {
+    question: "Como o roteamento influencia na entrega de dados na internet?",
+    options: [
+      "Define o caminho mais eficiente entre origem e destino",
+      "Envia os dados para qualquer destino aleatório",
+      "Decide quais dados são criptografados",
+      "Remove o cabeçalho HTTP"
+    ],
+    correct: 0,
+    feedback: "O roteamento determina o melhor caminho para que os pacotes de dados cheguem ao destino correto."
+  },
+  {
+    question: "O que representa a estrutura request/response do protocolo HTTP?",
+    options: [
+      "O cliente faz um pedido e o servidor responde com os dados",
+      "O servidor pergunta e o cliente responde",
+      "Ambos enviam dados aleatoriamente",
+      "O navegador apenas envia dados sem esperar resposta"
+    ],
+    correct: 0,
+    feedback: "O modelo request/response do HTTP envolve o cliente solicitando recursos e o servidor respondendo com os dados."
+  },
+
+];
+
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionTitle = document.getElementById("question-title");
+    const optionsContainer = document.getElementById("options-container");
+    const scoreContainer = document.getElementById("score-container");
+    const feedbackContainer = document.getElementById("feedback");
+    const nextBtn = document.getElementById("next-btn");
+
+    function showQuestion() {
+      const q = quizData[currentQuestion];
+      questionTitle.textContent = q.question;
+      optionsContainer.innerHTML = "";
+      feedbackContainer.textContent = "";
+      nextBtn.style.display = "none";
+
+      q.options.forEach((option, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.onclick = () => selectAnswer(btn, index, q.correct, q.feedback);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(button, selectedIndex, correctIndex, feedbackText) {
+      const buttons = optionsContainer.querySelectorAll("button");
+
+      buttons.forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === correctIndex) btn.classList.add("correct");
+        else if (i === selectedIndex) btn.classList.add("wrong");
+      });
+
+      if (selectedIndex === correctIndex) {
+        score++;
+      } else {
+        feedbackContainer.textContent = "Explicação: " + feedbackText;
+      }
+
+      nextBtn.style.display = "block";
+    }
+
+    nextBtn.onclick = () => {
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        showQuestion();
+      } else {
+        showScore();
+      }
+    };
+
+    function showScore() {
+      questionTitle.textContent = "Fim do Quiz!";
+      optionsContainer.innerHTML = "";
+      feedbackContainer.innerHTML = "";
+      nextBtn.style.display = "none";
+      scoreContainer.textContent = `Você acertou ${score} de ${quizData.length} questões.`;
+    }
+
+    showQuestion();
+  </script>
+
+</body>
+</html>
