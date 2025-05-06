@@ -118,6 +118,11 @@ div.wrapper p {
     font-weight: bolder;
 }
 
+div.wrapper img {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
 p.nota:before {
     content: "\00270D ";
     width: 40px;
