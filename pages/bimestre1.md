@@ -12,3 +12,4 @@ Nesta página, estão os materiais referentes ao 1° Bimestre do ano letivo.
 ## Exercícios
 
 - [Fundamentos Internet - Protocolo HTTP](../atividades/exercicio1.html)
+- [HTML](../slides/03/atividades/exercicio1.md)
