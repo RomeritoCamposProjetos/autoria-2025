@@ -41,7 +41,7 @@ section:has(h1) {
     align-items: center;    
 }
 
-section:has(h2) {
+section:has(h2, h3) {
     justify-content: flex-start;
 }
 
@@ -163,4 +163,13 @@ pre::before {
 
 code {
     background-color: rgb(252, 204, 212);
+}
+
+div.column {
+    display: flex;
+    flex-flow: column wrap;
+    flex-basis: 50%;
+    width: 50%;
+    height: 80%;
+
 }
