@@ -13,6 +13,8 @@ Alternativamente, estimulo o uso dos servidores embarcados da linguagem python (
 ## Slides
 
 - [Bimestre 1](./pages/bimestre1.md)
+- [Bimestre 2](./pages/bimestre2.md)
+- [Bimestre 3](./pages/bimestre3.md)
 
 ## Horários
 
