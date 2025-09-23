@@ -8,9 +8,8 @@ Nesta página, estão os materiais referentes ao 1° Bimestre do ano letivo.
 - [Aula 02 - Funcionamento da Web](../slides/01/01.pdf)
 - [Aula 03 - Protocolo HTTP](../slides/02/02.pdf)
 - [Aula 04 - HTML](../slides/03/03.pdf)
-- [Aula 05 - parte 1 - CSS - Introdução](../slides/04/04-parte1.pdf)
-- [Aula 05 - parte 2 - CSS - Introdução](../slides/04/04-parte2.pdf)
-- [Aula 05 - parte 3 - CSS - Introdução](../slides/04/04-parte3.pdf)
+- [Aula 05 - HTML Semântico](../slides/04/04.pdf)
+
 
 ## Exercícios
 

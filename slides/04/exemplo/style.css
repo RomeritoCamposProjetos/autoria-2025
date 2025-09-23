@@ -1,0 +1,14 @@
+
+a {
+    color: purple;
+    text-decoration: none;
+}
+
+.item-menu {
+    display: inline-block;
+    width: 120px;
+    background-color: aqua;
+    border: 2px dashed blue;
+    color: blue;
+    text-align: center;
+}
