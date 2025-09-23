@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .container {
+            block-size: 300px;
+            border: 1px solid;
+        }
+
+        p {
+            border: 1px solid;
+        }
+
+        .p {
+            /*considera  o fluxo do texto*/
+            inline-size: 200px;
+        }
+
+        .write-mode {
+            writing-mode: vertical-rl;
+        }
+
+        .h {
+            /*considera  largura física*/
+            width: 200px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <p class="p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, eveniet dignissimos ad esse adipisci non numquam unde expedita illo nihil vitae sed incidunt fugit totam dolores fugiat excepturi! Nulla, possimus.</p>
+
+        <p class="p write-mode">Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio corporis minima doloremque quaerat maxime aperiam dolore eaque libero! Dolorem ad voluptas obcaecati cum! Commodi at blanditiis nulla qui quo.</p>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <p class="h">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, eveniet dignissimos ad esse adipisci non numquam unde expedita illo nihil vitae sed incidunt fugit totam dolores fugiat excepturi! Nulla, possimus.</p>
+
+        <p class="h write-mode">Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio corporis minima doloremque quaerat maxime aperiam dolore eaque libero! Dolorem ad voluptas obcaecati cum! Commodi at blanditiis nulla qui quo.</p>
+    </div>
+
+    
+
+</body>
+</html>
