@@ -1,11 +1,11 @@
-# Capítulo: Formatação Visual Básica no CSS
+# Formatação Visual Básica no CSS
 
 ## 1. Caixas e o Modelo de Caixa
 
 O CSS parte do princípio de que **todo elemento gera uma ou mais caixas retangulares**, chamadas *element boxes*.
 Essas caixas formam a base da renderização visual de uma página.
 
-Cada caixa possui:
+Cada caixa possui (veja a figura a seguir):
 
 * **Área de conteúdo (content area)**: onde o texto ou outro conteúdo aparece.
 * **Padding (preenchimento)**: espaço entre o conteúdo e a borda.
@@ -30,7 +30,15 @@ Cada caixa possui:
 
 Nesse exemplo, vemos claramente todas as camadas do modelo de caixa.
 
----
+A imagem abaixo mostra a comparação entre o modelo físico e o modelo lógico.
+
+<div class="wrapper">
+
+![w:800](./image.png)
+
+<p>Fonte: <a href="https://ultimatecourses.com/blog/css-logical-properties">https://ultimatecourses.com/blog/css-logical-properties</a></p>
+
+</div>
 
 ## 2. Eixos: Bloco e Inline
 
@@ -45,8 +53,6 @@ No CSS, os elementos são organizados em **dois eixos principais**:
 
 Essa distinção é importante para layouts responsivos e internacionais, onde a direção de escrita pode mudar (ex.: árabe ou japonês).
 
----
-
 ## 3. Fluxo Normal
 
 A maioria dos elementos segue o chamado **fluxo normal** (*normal flow*).
@@ -59,8 +65,6 @@ Um elemento **sai do fluxo normal** quando é:
 * Transformado em **flex container** (`display: flex`)
 * Transformado em **grid container** (`display: grid`)
 * Exibido como **tabela** (`display: table`)
-
----
 
 ## 4. Tipos de Caixas
 
@@ -75,8 +79,6 @@ Um elemento **sai do fluxo normal** quando é:
 <p>Parágrafo 2</p>
 ```
 
----
-
 ### 4.2. Inline Box
 
 * Gerado por elementos como `<span>`, `<strong>`.
@@ -86,9 +88,7 @@ Um elemento **sai do fluxo normal** quando é:
 <p>Texto <strong>em negrito</strong> dentro de uma linha.</p>
 ```
 
----
-
-### 4.3. Elementos Substituídos
+### 4.3. Elementos Substituídos (replaced)
 
 * Não exibem conteúdo diretamente, mas funcionam como “caixas reservadas”.
 * Exemplo clássico: `<img>`.
@@ -97,13 +97,11 @@ Um elemento **sai do fluxo normal** quando é:
 <img src="paisagem.jpg" alt="Paisagem ao pôr do sol">
 ```
 
-### 4.4. Elementos Não Substituídos
+### 4.4. Elementos Não Substituídos (Nonreplaced)
 
 * O navegador renderiza o conteúdo diretamente, como `<p>` ou `<div>`.
 
----
-
-## 5. O Elemento Raiz e o Bloco de Contenção
+## 5. O Elemento Raiz e o Bloco de Contenção s
 
 O elemento `<html>` é considerado o **root element** em documentos HTML.
 Ele gera o **bloco de contenção inicial** (*initial containing block*), que corresponde à **viewport** (área visível da página).
@@ -134,8 +132,6 @@ Cada elemento possui um **containing block**:
 
 O parágrafo ocupará 200px, pois sua largura é relativa ao `div` pai.
 
----
-
 ## 6. Margens, Bordas, Padding e Fundo
 
 * **Background**: por padrão se estende até a borda, cobrindo o padding.
@@ -151,8 +147,6 @@ O parágrafo ocupará 200px, pois sua largura é relativa ao `div` pai.
   background: lightyellow;
 }
 ```
-
----
 
 ## 7. Alterando a Exibição: `display`
 
@@ -174,8 +168,6 @@ p {
 
 Um parágrafo exibido como inline **não deixa de ser um parágrafo** – apenas muda sua representação visual.
 
----
-
 ## 8. CSS e Acessibilidade
 
 O CSS afeta a **apresentação**, mas também pode influenciar na **acessibilidade**:
@@ -184,9 +176,7 @@ O CSS afeta a **apresentação**, mas também pode influenciar na **acessibilida
 * Ordem visual pode não ser a mesma da ordem de leitura por leitores de tela.
 * Elementos ocultos (`display: none`) podem ou não ser acessíveis.
 
-👉 Portanto, é importante sempre projetar pensando em **semântica e acessibilidade**.
-
----
+Portanto, é importante sempre projetar pensando em **semântica e acessibilidade**.
 
 ## 9. Manipulando Caixas de Bloco
 
@@ -205,8 +195,6 @@ O CSS trabalha com os **tamanhos lógicos**:
 
 Isso permite que os layouts se adaptem a diferentes direções de escrita.
 
----
-
 ## 10. Bordas Start e End
 
 Em vez de sempre usar `left` ou `right`, o CSS moderno recomenda usar propriedades lógicas:
@@ -223,8 +211,6 @@ Isso deixa o código mais internacionalizado.
   margin-inline-start: 20px;
 }
 ```
-
----
 
 ## 11. Tamanhos Lógicos e Conteúdo
 
@@ -248,8 +234,6 @@ O tamanho dos elementos pode ser definido de forma **baseada no conteúdo**:
 <div class="ex3">CSS é poderoso</div>
 ```
 
----
-
 ## 12. Tamanhos Mínimos e Máximos
 
 Podemos impor limites:
@@ -262,8 +246,6 @@ img {
 ```
 
 Isso é útil para imagens que precisam ser responsivas.
-
----
 
 ## 13. Altura e Largura Físicas
 
@@ -282,11 +264,9 @@ div {
 }
 ```
 
----
-
 ### Observação
 
-* `height` e `width` **não se aplicam a elementos inline não substituídos** (ex.: `<span>`).
+* `height` e `width` **não se aplicam a elementos inline não substituídos (Nonreplaced)** (ex.: `<span>`).
 * Mas funcionam se o `display` for alterado para `inline-block` ou `block`.
 
 ```css
@@ -297,8 +277,6 @@ span {
   background: lightgreen;
 }
 ```
-
----
 
 # Conclusão
 
